@@ -1,0 +1,134 @@
+data_path: /Users/adam/development/python/football/csv
+
+postgres:
+    host: 127.0.0.1
+    user: postgres
+    passwd: manager11
+    raw_data_db: prod
+
+gps_data:
+    filename: gps_data_parsed.csv
+    parse_config:
+        index_col: Date
+        parse_dates: True
+        day_first: True
+    tables:
+        - gps_data_raw_data
+
+players:
+    filename: players_list.csv
+    parse_config:
+        index_col: Name
+        parse_dates: False
+        day_first: None
+    tables:
+        - profiles_related_names
+        - profiles_player
+    
+injuries:
+    filename: uefa_injuries.csv
+    parse_config:
+        index_col: False
+        parse_dates: False
+        day_first: None
+    tables:
+        # injuries_injury:
+        #     - injury
+        # injuries_participate:
+        #     - participate
+        injuries_injuredbodypart:
+            - injured_body_part
+        injuries_leftright:
+            - left_right
+        injuries_typeofinjury:
+            - type_of_injury
+        injuries_whereithappened:
+            - where_it_happened
+        injuries_causeofinjury:
+            - cause_of_injury
+        injuries_contactcollison:
+            - contact_collision
+        injuries_mechanism:
+            - mechanism
+        injuries_placeofinjury:
+            - place_of_injury
+
+ml_table: ml_data
+
+gps_crawler:
+    user: 
+    passwd: 
+
+  # All numeric fields in data
+numeric_columns:
+    - duration 
+    - distance 
+    - distance_z1 
+    - custom_subjective_field 
+    - distance_z2 
+    - distance_z3 
+    - distance_z4 
+    - distance_z5
+    - distance_z6 
+    - speed_max 
+    - speed_avg 
+    - hr_max 
+    - hr_avg
+    - hr_exertion 
+    - hr_time_z1 
+    - hr_time_z2 
+    - hr_time_z3 
+    - hr_time_z4
+    - hr_time_z5 
+    - hr_time_z6 
+    - speed_exertion
+    - sprint_count_from_spi_iq 
+    - accel_z1 
+    - accel_z2 
+    - accel_z3
+    - decel_z1 
+    - decel_z2 
+    - decel_z3 
+    - body_load 
+    - impacts_z1
+    - impacts_z2 
+    - impacts_z3 
+    - impacts_z4 
+    - impacts_z5 
+    - impacts_z6
+    - collisions 
+    - running_series_count 
+    - running_imbalance
+    - foot_strikes 
+    - met_load_time_z1 
+    - met_load_time_z2
+    - met_load_time_z3 
+    - met_load_time_z4 
+    - met_load_time_z5
+    - met_load_relative_kj/kg 
+    - met_load_relative_power_w/kg
+    - met_load_hml_distance_z3_5 
+    - met_load_equivalent_distance
+    - met_load_distance_z1 
+    - met_load_distance_z2 
+    - met_load_distance_z3
+    - met_load_distance_z4 
+    - met_load_distance_z5 
+    - rpe
+    - met_load_absolute_kj 
+    - sprint_duration 
+    - sprint_distance/min
+    - sprint_distance 
+    - work_rate_interval_count
+    - work_rate_duration_sec 
+    - work_rate_interval_distance
+    - accel_load_total 
+    - accel_load_density 
+    - accel_load_density_index
+    
+# All text fields in data
+str_columns:
+    - session 
+    - drill
+    - position
+    - day_code
